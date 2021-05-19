@@ -1,4 +1,4 @@
-rom tkinter import*
+from tkinter import*
 from tkinter import Menu
 from tkinter import messagebox
 from tkinter import filedialog
