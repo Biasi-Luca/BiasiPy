@@ -40,28 +40,32 @@ class retta:
             return f'y = (-{self.__a}x -{self.__c})/{self.__b}'    
     #8 e 5 uguali
 
-    def m(self)
-        self.__a = abs(self.__a) 
-        self.__b = abs(self.__b)
-        self.__c = abs(self.__c)
 
-        if (self.__a>0 and self.__b>0 and self.__c>0):
-            return f'{self.__a} =(-{ self.__b}y-{self.__c})/x'
-        elif((self.__a<0 and self.__b>0 and self.__c>0): 
-            return f'{self.__a} = {self.__b}+{self.__c}/-x'
-        elif(self.__a<0 and self.__b<0 and self.__c>0):   
-            return f'{self.__a}=(-{self.__b}y+{self.__c})/-x'
-        elif(self.__a<0 and self.__b<0 and self.__c<0):
-            return f'{self.__a}=(-{self.__b}y-{self.__c})/-x'
-        elif(self.__a>0 and self.__b<0 and self.__c<0):    
-            return f'{self.__a} =({ self.__b}y+{self.__c})/x'
-        elif(self.__a>0 and self.__b>0 and self.__c<0):
-            return f'{self.__a}=(-{self.__b}y+{self.__c})/x'
-        elif(self.__a<0 and self.__b>0 and self.__c<0): 
-            return f'{self.__a} =({ self.__b}y-{self.__c})/-x'
-        elif(self.__a>0 and self.__b<0 and self.__c>0):    
-            return f'{self.__a} =({ self.__b}y-{self.__c})/x' 
+    def trova_y(self, x=int):
+        y=int((-({self.__a} / {self.__b})*x)+ self.__c)
+        return y
+     
+    def m(self):
+      return  -({self.__a}/{self.__b})
 
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+         
 
         
 
@@ -89,7 +93,5 @@ r = retta(1,1,1)
 print(r.equazione_imp())
 print(r.equazione_esp())
 print(r.m())
+print(r.trova_y())
 
-
-# il metodo dir permette di conoscere tutti i metodi applicabili all'oggetto passato come parametro
-print(dir(r))
