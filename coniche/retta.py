@@ -41,12 +41,17 @@ class retta:
     #8 e 5 uguali
 
 
-    def trova_y(self, x=int):
-        y=int((-({self.__a} / {self.__b})*x)+ self.__c)
-        return y
-     
+
+
+    def trova_y(self, x):
+       self.__x = float(x) 
+       return f" y = {(-self.__a / self.__b)* self.__x + (-self.__c / self.__b)}"
+
+
+#return  y =int((-((self.__a) / (self.__b))*float(x)+ self.__c)
+
     def m(self):
-      return  -({self.__a}/{self.__b})
+      return -((self.__a))/((self.__b))
 
 
    
@@ -93,5 +98,5 @@ r = retta(1,1,1)
 print(r.equazione_imp())
 print(r.equazione_esp())
 print(r.m())
-print(r.trova_y())
+print(r.trova_y(input('x =')))
 
