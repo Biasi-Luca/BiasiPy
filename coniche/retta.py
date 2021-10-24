@@ -48,7 +48,6 @@ class retta:
        return f" y = {(-self.__a / self.__b)* self.__x + (-self.__c / self.__b)}"
 
 
-#return  y =int((-((self.__a) / (self.__b))*float(x)+ self.__c)
 
     def m(self):
       return -((self.__a))/((self.__b))
