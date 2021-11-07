@@ -1,41 +1,65 @@
 # La classe retta
-
+import math
 class retta:
     def __init__(self,a,b,c):
 
     # un attributo privato si dichiara con il doppio underscore ( __ )    
-        self.__a = a  
-        self.__b = b
-        self.__c = c
+        self.__a = int(a)  
+        self.__b = int(b)
+        self.__c = int(c)
+        self.__punti= []
+  
+    def getA(self):
+        return f"\n a = {self.__a}"
+    
+    def getB(self):
+        return f"\n b = {self.__b}"
+
+    def getC(self):
+        return f"\n c = {self.__c}" 
+
+    def instersezione(self, a1 , b1 , c1):
+        self.__a1 = float(a1)
+        self.__b1 = float(b1)
+        self.__c1 = float(c1)
+        if (-self.__b / self.__a) == (-self.__b1 / self.__a1):
+            if self.__c == self.__c1:
+                return f"\nLe rette sono coincidenti \n {self.__punti}"
+            else:
+                return f"\nNull"
+        elif self.__c == self.__c1:
+            return f"\nIl putnto di incontro delle due rette è: (0, {self.__c})" 
+        else:
+            return f"\nLe rette sono incidenti e la coordinata del punto d'incidenza è: ({((-self.__c / self.__b)+(self.__c1 / self.__b1))/((-self.__b / self.__a)+(self.__b1 / self.__a1))}, {((-self.__b / self.__c)+(self.__b1 / self.__c1))/((-self.__b / self.__a)+(self.__b1 / self.__a1))})"
 
     def equazione_imp(self):
         
         if(self.__b>0 and self.__c>0):
-            return f'{self.__a}x + {self.__b}y + {self.__c} = 0'    
+            return f'{str(self.__a)}x +{str(self.__b)}y +{str(self.__c)} = 0'    
         elif(self.__b<0 and self.__c>0):
-            return f'{self.__a}x {self.__b}y + {self.__c} = 0'
+            return f'{str(self.__a)}x {str(self.__b)}y + {str(self.__c)} = 0'
         elif(self.__b>0 and self.__c<0):
-            return f'{self.__a}x + {self.__b}y {self.__c} = 0'
+            return f'{str(self.__a)}x + {str(self.__b)}y {str(self.__c)} = 0'
         else:
-            return f'{self.__a}x {self.__b}y {self.__c} = 0'
+            return f'{str(self.__a)}x {str(self.__b)}y {str(self.__c)} = 0'
 
     def equazione_esp(self):
         if(self.__a>0 and self.__b>0 and self.__c>0) :
-            return f'y = (-{self.__a}x -{self.__c})/{self.__b}'
+            return f'y = (-{str(self.__a)}x -{str(self.__c)})/{str(self.__b)}'
         elif(self.__a<0 and self.__b>0 and self.__c>0):
-            return f'y = ({abs(self.__a)}x -{self.__c})/{self.__b}'
+            return f'y = ({str(abs(self.__a))}x -{str(self.__c)})/{str(self.__b)}'
         elif(self.__a<0 and self.__b<0 and self.__c>0):
-            return f'y = ({abs(self.__a)}x -{self.__c})/{self.__b}'
+            return f'y = ({str(abs(self.__a))}x -{str(self.__c)})/{str(self.__b)}'
         elif(self.__a<0 and self.__b<0 and self.__c<0):
-            return f'y = ({abs(self.__a)}x +{abs(self.__c)})/{self.__b}'
+            return f'y = ({str(abs(self.__a))}x +{str(abs(self.__c))})/{str(self.__b)}'
         elif(self.__a>0 and self.__b<0 and self.__c<0):
-            return f'y = (-{self.__a}x +{abs(self.__c)})/{self.__b}' 
+            return f'y = (-{str(self.__a)}x +{str(abs(self.__c))})/{str(self.__b)}' 
         elif(self.__a>0 and self.__b>0 and self.__c<0):
-            return f'y = (-{self.__a}x +{abs(self.__c)})/{self.__b}' 
+            return f'y = (-{str(self.__a)}x +{str(abs(self.__c))})/{str(self.__b)}' 
         elif(self.__a<0 and self.__b>0 and self.__c<0):
-            return f'y = ({abs(self.__a)}x +{abs(self.__c)})/{self.__b}'
+            return f'y = ({str(abs(self.__a))}x +{str(abs(self.__c))})/{str(self.__b)}'
         elif(self.__a>0 and self.__b<0 and self.__c<0):
-             return f'y = (-{self.__a}x +{abs(self.__c)})/{self.__b}' 
+             return f'y = (-{str(self.__a)}x +{str(abs(self.__c))})/{str(self.__b)}' 
         elif(self.__a>0 and self.__b<0 and self.__c>0):  
             return f'y = (-{self.__a}x -{self.__c})/{self.__b}'    
     #8 e 5 uguali
@@ -50,11 +74,45 @@ class retta:
 
 
     def m(self):
-      return -((self.__a))/((self.__b))
+      if self.__b == 0:
+       return f"Il coefficiente angolare è indefinito"
+      else:
+       return -((self.__a))/((self.__b))
 
 
+    def punti(self, N, M):
+        self.N = int(N)
+        self.M = int(M)
+    
+        for self.N in range (self.M):
+            tupla = (self.__x, (-self.__a * self.__x) / self.__b + (-self.__c / self.__b))
+            self.__x = self.__x + 1
+            self.__punti.append(tupla)
+        return f"\n Le coordinate dei punti appartenenti alla retta sono: \n {self.__punti}"
+
+
+    def a_b_c_da_punti(self, x1, x2, y1, y2):
+        self.__x1 = int(x1)
+        self.__x2 = int(x2)
+        self.__y1 = int(y1)
+        self.__y2 = int(y2)
+        x_d = (self.__x2 - self.__x1)
+        y_d = (self.__y2 - self.__y1)
+        MCD = math.gcd(x_d, y_d)
+        mcm = (x_d * y_d) / MCD
+        a = mcm / x_d
+        b = mcm / y_d
+        c = (mcm / x_d * -self.__x2) + (mcm / y_d * self.__y2)
+        print("a = ", a,',', "b = ", b,',', "c = ",c)    
    
-
+    def a_b_c_da_m(self, x3, y3, m1):
+        self.__x3 = int(x3)
+        self.__y3 = int(y3)
+        self.__m1 = int(m1)
+        a = self.__m1
+        b = -1
+        c = (self.__m1 * -self.__x3)+self.__y3
+        print("a = ", a,',', "b = ", b,',', "c = ",c)
 
 
 
@@ -92,10 +150,13 @@ class retta:
 # inizio del programma chiamante
 
 
-r = retta(1,1,1)
+r = retta(input('valore a='),input('valore b='),input('valore c='))
 
-print(r.equazione_imp())
-print(r.equazione_esp())
-print(r.m())
+print("l'equazione implicita è",r.equazione_imp())
+print("l'equazione esplicita è",r.equazione_esp())
+print("Il coefficiente angolare è",r.m())
 print(r.trova_y(input('x =')))
-
+print(r.instersezione(input('a1 = ' ), input('b1 = ' ), input('c1 = ' )))
+print(r.punti(input('inizio intervallo = ') , input('fine intervallo = ')))
+print(r.a_b_c_da_punti(input('x1 = ' ), input('x2 = ' ), input('y1 = ' ), input('y2 = ' )))
+print(r.a_b_c_da_m(input('x1 = ' ), input('y1 = ' ), input('m = ' )))
