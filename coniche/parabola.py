@@ -23,20 +23,20 @@ class parabola:
         if(asse_simmetria=="x"):
             y =-((self.__b)/((self.__a)*2))
             x = (1-(pow(self.__b,2)-4*self.__a*self.__c))/4*self.__a 
-            print("Le coordinate del fuoco sono ",x,y)
+            return (x,y)
         elif(asse_simmetria=="y"):
            x =-((self.__b)/((self.__a)*2))
            y = (1-(pow(self.__b,2)-4*self.__a*self.__c))/4*self.__a
-        print("Le coordinate del fuoco sono ",x,y)
+        return (x,y)
 
     def direttrice(self,asse_simmetria="x"):
          if (asse_simmetria == "x"):
             y= -1-(pow(self.__b,2)-4*self.__a*self.__c)/4*self.__a
-            print("L'equazione dell'ascissa è",y) 
+            return(y) 
 
          elif (asse_simmetria == "y"):
             x= -1-(pow(self.__b,2)-4*self.__a*self.__c)/4*self.__a
-            print("L'equazione dell'ascissa è",x) 
+            return(x) 
 
       
 
@@ -48,5 +48,5 @@ class parabola:
 
 
 p = parabola(input('valore a='),input('valore b='),input('valore c='))
-print(p.fuoco(input('Asse di simmetria parallelo a quale asse?')))
-print(p.direttrice(input('Asse di simmetria parallelo a quale asse?')))
+print("le coordinate del fuoco sono",(p.fuoco(input('Asse di simmetria parallelo a quale asse?'))))
+print("l'equazione della diretrice è", (p.direttrice(input('Asse di simmetria parallelo a quale asse?'))))
